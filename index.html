@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7K Law Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            overflow-x: hidden;
+            background-image: url('https://placehold.co/1920x1080/0b0c10/1f2833?text=Law+Prep+Background');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(26, 46, 60, 0.3) 0%, transparent 70%);
+            animation: moveBackground 30s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        /* Liquid Glass Effect */
+        .glass-card {
+            background-color: rgba(30, 35, 50, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: perspective(1000px);
+        }
+
+        .glass-card:hover {
+            transform: perspective(1000px) scale(1.03) translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-nav {
+            background-color: rgba(30, 35, 50, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-icon-wrapper {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-icon-wrapper:hover {
+            transform: scale(1.1);
+            background-color: rgba(69, 162, 158, 0.2);
+            box-shadow: 0 0 15px rgba(69, 162, 158, 0.5);
+            border-radius: 50%;
+        }
+
+        .cta-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: rgba(69, 162, 158, 1);
+            box-shadow: 0 0 20px rgba(69, 162, 158, 0.5);
+        }
+        
+        .cta-button-mobile {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button-mobile:hover {
+            background-color: rgba(69, 162, 158, 1);
+            box-shadow: 0 0 20px rgba(69, 162, 158, 0.5);
+        }
+        
+        /* Utility for displaying different sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0c10] text-[#c5c6c7]">
+    <div class="min-h-screen flex flex-col justify-between">
+        <!-- Main Content -->
+        <main id="main-content" class="flex-1 flex flex-col justify-center items-center p-4">
+            <!-- Home Section -->
+            <section id="home-section" class="section active w-full h-full justify-center items-center">
+                <div class="flex flex-col md:flex-row flex-wrap justify-center items-center md:items-stretch gap-6 w-full max-w-7xl">
+                    <!-- The Storyteller -->
+                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] h-full min-h-[250px] md:min-h-[300px] cursor-pointer" onclick="showSection('storyteller-section')">
+                        <img src="https://placehold.co/100x100/1f2833/66fcf1?text=%F0%9F%93%96" alt="Book icon" class="w-16 h-16 mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold mb-2 text-[#66fcf1]">The Storyteller</h2>
+                        <p class="text-sm md:text-base">A classic, narrative-driven portfolio to learn my story.</p>
+                    </div>
+
+                    <!-- The Terminal -->
+                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] h-full min-h-[250px] md:min-h-[300px] cursor-pointer" onclick="showSection('terminal-section')">
+                        <img src="https://placehold.co/100x100/1f2833/66fcf1?text=%E2%8F%A9" alt="Terminal icon" class="w-16 h-16 mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold mb-2 text-[#66fcf1]">The Terminal</h2>
+                        <p class="text-sm md:text-base">For the geeks at heart, an old-school command-line interface.</p>
+                    </div>
+                    
+                    <!-- The Arcade -->
+                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] h-full min-h-[250px] md:min-h-[300px] cursor-pointer" onclick="showSection('arcade-section')">
+                        <img src="https://placehold.co/100x100/1f2833/66fcf1?text=%F0%9F%8E%AE" alt="Arcade icon" class="w-16 h-16 mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold mb-2 text-[#66fcf1]">The Arcade</h2>
+                        <p class="text-sm md:text-base">Because learning should be fun. Try out the minigames and unlock content.</p>
+                    </div>
+
+                    <!-- The Law Firm -->
+                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] h-full min-h-[250px] md:min-h-[300px] cursor-pointer" onclick="showSection('lawfirm-section')">
+                        <img src="https://placehold.co/100x100/1f2833/66fcf1?text=%E2%9A%96" alt="Law Firm icon" class="w-16 h-16 mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold mb-2 text-[#66fcf1]">The Law Firm</h2>
+                        <p class="text-sm md:text-base">My modern, sleek, and intuitive law firm website.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gemini Storyteller Section -->
+            <section id="storyteller-section" class="section hidden w-full h-full justify-center items-center">
+                <div class="glass-card p-8 text-center max-w-xl w-full">
+                    <h2 class="text-3xl font-bold text-[#66fcf1] mb-4">The Storyteller</h2>
+                    <p class="text-lg mb-4">Enter a theme and let Gemini create a story for you!</p>
+                    <textarea id="story-prompt" rows="3" class="w-full p-4 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-[#66fcf1] transition-colors resize-none mb-4" placeholder="e.g., A detective cat solves the mystery of the missing fish."></textarea>
+                    <button id="generate-story-btn" class="px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="generateStory()">
+                        Generate Story ✨
+                    </button>
+                    <div id="story-output" class="mt-8 text-left whitespace-pre-wrap"></div>
+                    <div id="story-loading" class="mt-8 hidden">
+                        <div class="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full mx-auto"></div>
+                        <p class="mt-2 text-center">Generating...</p>
+                    </div>
+                    <button class="mt-8 px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="showSection('home-section')">Go Back</button>
+                </div>
+            </section>
+            
+            <!-- Placeholder Section - Terminal -->
+            <section id="terminal-section" class="section hidden w-full h-full justify-center items-center">
+                <div class="glass-card p-8 text-center max-w-xl w-full">
+                    <h2 class="text-3xl font-bold text-[#66fcf1] mb-4">The Terminal</h2>
+                    <p class="text-lg">This section would be a command-line interface. Stay tuned for future updates!</p>
+                    <button class="mt-8 px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="showSection('home-section')">Go Back</button>
+                </div>
+            </section>
+
+            <!-- Placeholder Section - Arcade -->
+            <section id="arcade-section" class="section hidden w-full h-full justify-center items-center">
+                <div class="glass-card p-8 text-center max-w-xl w-full">
+                    <h2 class="text-3xl font-bold text-[#66fcf1] mb-4">The Arcade</h2>
+                    <p class="text-lg">This section would contain interactive minigames to make learning fun!</p>
+                    <button class="mt-8 px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="showSection('home-section')">Go Back</button>
+                </div>
+            </section>
+
+            <!-- Gemini Law Firm Section -->
+            <section id="lawfirm-section" class="section hidden w-full h-full justify-center items-center">
+                <div class="glass-card p-8 text-center max-w-xl w-full">
+                    <h2 class="text-3xl font-bold text-[#66fcf1] mb-4">The Law Firm</h2>
+                    <p class="text-lg mb-4">Enter a legal concept or document you'd like drafted or explained. I'll provide an informative response. Remember this is for informational purposes only.</p>
+                    <textarea id="law-prompt" rows="3" class="w-full p-4 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-[#66fcf1] transition-colors resize-none mb-4" placeholder="e.g., Draft a simple privacy policy for a personal blog."></textarea>
+                    <button id="generate-law-btn" class="px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="generateLawText()">
+                        Legal Assistant ✨
+                    </button>
+                    <div id="law-output" class="mt-8 text-left whitespace-pre-wrap"></div>
+                    <div id="law-loading" class="mt-8 hidden">
+                        <div class="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full mx-auto"></div>
+                        <p class="mt-2 text-center">Generating...</p>
+                    </div>
+                    <div class="mt-8 text-sm text-red-400">
+                        <p>Disclaimer: The information provided is generated by an AI and is for general informational purposes only. It is not legal advice and should not be relied upon as such. You should consult with a qualified legal professional for advice on specific legal issues.</p>
+                    </div>
+                    <button class="mt-8 px-6 py-3 bg-[#45a29e] rounded-full text-white font-bold cta-button" onclick="showSection('home-section')">Go Back</button>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Mobile CTA Button -->
+        <div class="fixed bottom-6 right-6 md:hidden">
+            <button class="w-16 h-16 bg-[#45a29e] rounded-full flex items-center justify-center cta-button-mobile" onclick="toggleMobileNav()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex flex-col items-center justify-center transition-opacity duration-300 opacity-0 pointer-events-none md:hidden">
+            <button class="absolute top-6 right-6 text-white text-3xl" onclick="toggleMobileNav()">
+                &times;
+            </button>
+            <div class="flex flex-col gap-8 text-xl text-center">
+                <a href="#" class="text-white hover:text-[#66fcf1] transition-colors" onclick="showSection('home-section'); toggleMobileNav();">Home</a>
+                <a href="#" class="text-white hover:text-[#66fcf1] transition-colors" onclick="showSection('storyteller-section'); toggleMobileNav();">The Storyteller</a>
+                <a href="#" class="text-white hover:text-[#66fcf1] transition-colors" onclick="showSection('terminal-section'); toggleMobileNav();">The Terminal</a>
+                <a href="#" class="text-white hover:text-[#66fcf1] transition-colors" onclick="showSection('arcade-section'); toggleMobileNav();">The Arcade</a>
+                <a href="#" class="text-white hover:text-[#66fcf1] transition-colors" onclick="showSection('lawfirm-section'); toggleMobileNav();">The Law Firm</a>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-6 w-full flex justify-center z-40">
+            <nav class="hidden md:flex glass-nav p-2 space-x-4">
+                <a href="#" class="nav-icon-wrapper p-3 rounded-full" onclick="showSection('home-section')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#66fcf1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l-7 7-7-7m11 4v6a1 1 0 01-1 1h-3" />
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon-wrapper p-3 rounded-full" onclick="showSection('storyteller-section')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#66fcf1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.433 9.455 5.234 8 5.407m4 0c1.832-.174 3.329 1.132 4.029 2.508M12 6.253a5.5 5.5 0 015.656 7.425m-11.312 0a5.5 5.5 0 015.656-7.425M12 18.253a5.5 5.5 0 01-5.656-7.425m11.312 0a5.5 5.5 0 01-5.656 7.425" />
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon-wrapper p-3 rounded-full" onclick="showSection('terminal-section')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#66fcf1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h8M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon-wrapper p-3 rounded-full" onclick="showSection('arcade-section')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#66fcf1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.132l-3.328 3.328m0 0l-3.328-3.328m3.328 3.328V3m9.328 11.458a4.99 4.99 0 00-7.394-4.242A4.99 4.99 0 005.158 11.132m9.594-.282a5 5 0 110-8H20v8a1 1 0 01-1 1h-4.321" />
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon-wrapper p-3 rounded-full" onclick="showSection('lawfirm-section')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#66fcf1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z" />
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                activeSection.classList.add('active');
+            }
+        }
+        
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (mobileNav.classList.contains('opacity-0')) {
+                mobileNav.classList.remove('opacity-0', 'pointer-events-none');
+                mobileNav.classList.add('opacity-100');
+            } else {
+                mobileNav.classList.remove('opacity-100');
+                mobileNav.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        async function generateStory() {
+            const prompt = document.getElementById('story-prompt').value;
+            const outputDiv = document.getElementById('story-output');
+            const loadingDiv = document.getElementById('story-loading');
+            const button = document.getElementById('generate-story-btn');
+
+            if (!prompt) {
+                outputDiv.textContent = 'Please enter a prompt to generate a story.';
+                return;
+            }
+
+            outputDiv.textContent = '';
+            loadingDiv.classList.remove('hidden');
+            button.disabled = true;
+
+            const systemPrompt = "You are a creative storyteller. Write a concise, single-paragraph story based on the user's prompt.";
+            const userQuery = prompt;
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Error generating story.";
+                outputDiv.textContent = text;
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                outputDiv.textContent = 'Failed to generate story. Please try again.';
+            } finally {
+                loadingDiv.classList.add('hidden');
+                button.disabled = false;
+            }
+        }
+
+        async function generateLawText() {
+            const prompt = document.getElementById('law-prompt').value;
+            const outputDiv = document.getElementById('law-output');
+            const loadingDiv = document.getElementById('law-loading');
+            const button = document.getElementById('generate-law-btn');
+
+            if (!prompt) {
+                outputDiv.textContent = 'Please enter a request.';
+                return;
+            }
+
+            outputDiv.textContent = '';
+            loadingDiv.classList.remove('hidden');
+            button.disabled = true;
+
+            const systemPrompt = "You are a legal document assistant. Based on the user's request, draft a sample document or provide a general explanation. Always include a disclaimer at the end stating this is not legal advice and users should consult a professional.";
+            const userQuery = prompt;
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Error generating document.";
+                outputDiv.textContent = text;
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                outputDiv.textContent = 'Failed to generate content. Please try again.';
+            } finally {
+                loadingDiv.classList.add('hidden');
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
